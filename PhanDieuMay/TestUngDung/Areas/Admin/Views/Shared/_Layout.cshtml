@@ -1,0 +1,200 @@
+﻿@using TestUngDung.Areas.Admin.Models;
+@using TestUngDung.Common;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/jqvmap/jqvmap.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/dist/css/adminlte.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/daterangepicker/daterangepicker.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/summernote/summernote-bs4.min.css">
+    <link rel="stylesheet" href="~/Assets/Admin/plugins/fontawesome-free/css/all.min.css">
+    <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+</head>
+<body class="hold-transition sidebar-mini layout-fixed">
+    @RenderBody()
+
+    <!-- Main Sidebar Container -->
+    <aside class="main-sidebar sidebar-dark-primary elevation-4">
+        <!-- Brand Logo -->
+        <a href="index3.html" class="brand-link">
+            <img src="~/Assets/Admin/dist/img/mayy.jpg" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
+                 style="opacity: .8">
+            <span class="brand-text font-weight-light">DM-BOOK</span>
+        </a>
+        <!-- Sidebar -->
+        <div class="sidebar">
+            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+                <div class="image">
+                    <img src="~/Assets/Admin/dist/img/UTELogo.png" class="img-circle elevation-2" alt="User Image">
+                </div>
+                <div class="info">
+                    <a href="#" class="d-block">
+                        Phan Dieu May
+                    </a>
+                </div>
+            </div>
+
+            @if (TempData["AlertMessage"] != null)
+            {
+                <div id="AlertBox" class="alert @TempData["AlertType"] hide">
+                    @TempData["AlertMessage"]
+                </div>
+            }
+            <div class="form-inline">
+                <div class="input-group" data-widget="sidebar-search">
+                    <input class="form-control form-control-sidebar" type="search" placeholder="Search"
+                           aria-label="Search">
+                    <div class="input-group-append">
+                        <button class="btn btn-sidebar">
+                            <i class="fas fa-search fa-fw"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <nav class="mt-2">
+                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                    data-accordion="false">
+                    <li class="nav-item menu-open">
+                        <a href="@Url.Action("Index", "Home")" class="nav-link active">
+                            <i class="nav-icon fas fa-tachometer-alt"></i>
+                            <p>
+                                Quản trị bán hàng
+                            </p>
+                        </a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-copy"></i>
+                            <p>
+                                Sản phẩm
+                                <i class="fas fa-angle-left right"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="@Url.Action("Index", "Product")" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Quản lý sản phẩm</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a href="#" class="nav-link">
+                            <i class="nav-icon fas fa-chart-pie"></i>
+                            <p>
+                                Thống kê
+                                <i class="right fas fa-angle-left"></i>
+                            </p>
+                        </a>
+                        <ul class="nav nav-treeview">
+                            <li class="nav-item">
+                                <a href="pages/charts/chartjs.html" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Mặt hàng bán chạy nhất</p>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="@Url.Action("OrderKhachHang", "User")" class="nav-link">
+                                    <i class="far fa-circle nav-icon"></i>
+                                    <p>Khách hàng thân thiết</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-header">KHÁC</li>
+                    <li class="nav-item">
+                        <a href="@Url.Action("Index", "User")" class="nav-link">
+                            <i class="nav-icon far fa-circle text-info"></i>
+                            <p>Quản lý người dùng</p>
+                        </a>
+                    </li>
+                    <li class="nav-item menu-open">
+                        <a href="@Url.Action("Logout", "Home")" class="nav-link">
+                            <i class="nav-icon fas fa-sign-out-alt"></i>
+                            <p>
+                                Đăng xuất
+                            </p>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </aside>
+    <script src="~/Assets/Admin/plugins/jquery/jquery.min.js"></script>
+    <script src="~/Assets/Admin/plugins/jquery-ui/jquery-ui.min.js"></script>
+    <script>
+    </script>
+    <script src="~/Assets/Admin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Assets/Admin/plugins/chart.js/Chart.min.js"></script>
+    <script src="~/Assets/Admin/plugins/sparklines/sparkline.js"></script>
+    <script src="~/Assets/Admin/plugins/jqvmap/jquery.vmap.min.js"></script>
+    <script src="~/Assets/Admin/plugins/jqvmap/maps/jquery.vmap.usa.js"></script>
+    <script src="~/Assets/Admin/plugins/jquery-knob/jquery.knob.min.js"></script>
+    <script src="~/Assets/Admin/plugins/moment/moment.min.js"></script>
+    <script src="~/Assets/Admin/plugins/daterangepicker/daterangepicker.js"></script>
+    <script src="~/Assets/Admin/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/summernote/summernote-bs4.min.js"></script>
+    <script src="~/Assets/Admin/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script>
+    <script src="~/Assets/Admin/dist/js/adminlte.js"></script>
+    <script src="~/Assets/Admin/dist/js/pages/dashboard.js"></script>
+    <script>
+        $('#AlertBox').removeClass("hide");
+        $('#AlertBox').delay(1500).slideUp(700);
+    </script>
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable({
+                "language": {
+                    "lengthmenu": "Hiển thị _MENU_ dòng trên 1 trang",
+                    "zerorecords": "Không tìm thấy dữ liệu",
+                    "info": "Hiển thị trang _PAGE_ trong tổng số _PAGES_ trang",
+                    "infoempty": "Không có dữ liệu nào",
+                    "infofiltered": "(filtered from _max_ total records)"
+                }
+            });
+        });
+    </script>
+    <script>
+    $(document).ready(function () {
+        $('#deleteRecord a').click(function (e) {
+            e.preventDefault();
+
+            var id = $(this).attr("Id");
+
+            var MSG = confirm("Bạn thật sự muốn xóa?");
+
+            if (MSG) {
+
+                $.ajax({
+                    type: "POST",
+                    url: '@Url.Action("DeleteComments")',
+                    data: { id: id },
+                    dataType: "json",
+                    error: function () {
+                        setTimeout(function () { location.reload(); }, 1000);
+                    },
+                    success: function () {
+                        alert("Error while deleting data");
+                    }
+                });
+            }
+        })
+    });
+    </script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+</body>
+</html>
+

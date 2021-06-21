@@ -1,0 +1,65 @@
+﻿@model IEnumerable<ModelEF.Model.Product>
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+<main>
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="~/Assets/Admin/dist/img/UTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Quản lý sản phẩm</h3>
+                        </div>
+                        <div class="card-body">
+                            @using (Html.BeginForm("Index", "Product", FormMethod.Post))
+                            {
+                                <div class="row">
+                                    <div class="col-md-2">
+                                        <p>
+                                            <a href="@Url.Action("Index", "Product")" class="btn btn-primary">Quay lại</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            }
+                            <div>
+                                    <table class="table">
+                                        <tr>
+                                            <td>Tên sản phẩm</td>
+                                            <td>Loại sản phẩm</td>
+                                            <td>Hình ảnh</td>
+                                            <td>Đơn giá</td>
+                                            <td>Số lượng</td>
+                                            <td>Mô tả</td>
+                                            <td>Ghi chú</td>
+                                        </tr>
+                                        @foreach (var item in Model)
+                                        {
+                                    <tr>
+                                        <td>@item.Name</td>
+                                        <td>@item.Category.Name</td>
+                                        <td>
+                                            <img style="width:70px;" src="~/Upload/Product/@item.Image" />
+                                        </td>
+                                        <td>@item.UnitCost</td>
+                                        <td>@item.Quantity</td>
+                                        <td>@item.Description</td>
+                                        <td>@item.Status</td>
+                                    </tr>
+                                        }
+                                    </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

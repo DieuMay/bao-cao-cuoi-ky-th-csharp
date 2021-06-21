@@ -1,0 +1,12 @@
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\NguyenThanhDuyLibrary.dll.config
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\NguyenThanhDuyLibrary.dll
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\NguyenThanhDuyLibrary.pdb
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\EntityFramework.dll
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\EntityFramework.SqlServer.dll
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\EntityFramework.xml
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\bin\Debug\EntityFramework.SqlServer.xml
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\obj\Debug\NguyenThanhDuyLibrary.csprojAssemblyReference.cache
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\obj\Debug\NguyenThanhDuyLibrary.csproj.CoreCompileInputs.cache
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\obj\Debug\NguyenThanhDuyLibrary.csproj.CopyComplete
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\obj\Debug\NguyenThanhDuyLibrary.dll
+D:\Hk220\Csharp\NguyenThanhDuy\NguyenThanhDuyLibrary\obj\Debug\NguyenThanhDuyLibrary.pdb

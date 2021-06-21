@@ -1,0 +1,246 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<header id="header">
+    <div class="header-bottom">
+        <!--header-bottom-->
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-9">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                    </div>
+                    <div class="mainmenu pull-left">
+                        <ul class="nav navbar-nav collapse navbar-collapse">
+                            <li><a href="index.html" class="active">Trang chủ</a></li>
+                            <li class="dropdown">
+                                <a href="#">Cửa hàng<i class="fa fa-angle-down"></i></a>
+                                <ul role="menu" class="sub-menu">
+                                    <li><a href="@Url.Action("Index", "Admin/Product")">Sản phẩm</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="@Url.Action("Index", "Admin/Login")">Đăng nhập</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="search_box pull-right">
+                        <input type="text" placeholder="Search" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div><!--/header-bottom-->
+</header><!--/header-->
+
+<section id="slider">
+    <!--slider-->
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div id="slider-carousel" class="carousel slide" data-ride="carousel">
+                    <ol class="carousel-indicators">
+                        <li data-target="#slider-carousel" data-slide-to="0" class="active"></li>
+                        <li data-target="#slider-carousel" data-slide-to="1"></li>
+                        <li data-target="#slider-carousel" data-slide-to="2"></li>
+                    </ol>
+
+                    <div class="carousel-inner">
+                        <div class="item active">
+                            <div class="col-sm-6">
+                                <h1><span>DM</span>-BOOK</h1>
+                                <h2>Sách - đồ dùng học tập</h2>
+                                <p>Bán và cung cấp sỉ - lẻ các loại sách giáo khoa các cấp, đồ dùng học tập, văn phòng,...</p>
+                                <button type="button" class="btn btn-default get">Xem ngay</button>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>DM</span>-BOOK</h1>
+                                <h2>Sách - đồ dùng học tập</h2>
+                                <p>Bán và cung cấp sỉ - lẻ các loại sách giáo khoa các cấp, đồ dùng học tập, văn phòng,...</p>
+                                <button type="button" class="btn btn-default get">Xem ngay</button>
+                            </div>
+                        </div>
+
+                        <div class="item">
+                            <div class="col-sm-6">
+                                <h1><span>DIEUMAY</span>-SHOP</h1>
+                                <h2>Sách - đồ dùng học tập</h2>
+                                <p>Bán và cung cấp sỉ - lẻ các loại sách giáo khoa các cấp, đồ dùng học tập, văn phòng,...</p>
+                                <button type="button" class="btn btn-default get">Xem ngay</button>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <a href="#slider-carousel" class="left control-carousel hidden-xs" data-slide="prev">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                    <a href="#slider-carousel" class="right control-carousel hidden-xs" data-slide="next">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section><!--/slider-->
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-3">
+                <div class="left-sidebar">
+                    <h2>Loại sản phẩm</h2>
+                    <div class="panel-group category-products" id="accordian">
+                        @foreach (var item in Model)
+                        {
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <h4 class="panel-title"><a href="#">@item.Category.Name</a></h4>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-sm-9 padding-right">
+                <div class="features_items">
+                    <!--features_items-->
+                    <h2 class="title text-center">Sản phẩm tại shop</h2>
+                    @{ var i = 1;}
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-sm-4">
+                            <div class="product-image-wrapper">
+                                <div class="single-products">
+                                    <div class="productinfo text-center">
+                                        <img src="~/Upload/Product/@item.Image" alt="" />
+                                        <h2>@item.UnitCost</h2>
+                                        <p>@item.Description</p>
+                                        <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                    </div>
+                                    <div class="product-overlay">
+                                        <div class="overlay-content">
+                                            <h2>@item.UnitCost</h2>
+                                            <p>@item.Description</p>
+                                            <a href="#" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        i++;
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer id="footer">
+    <!--Footer-->
+    <div class="footer-top">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="companyinfo">
+                        <h2><span>DM</span>-SHOP</h2>
+                        <p>Sách - đồ dùng học tập</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="address">
+                        <img src="images/home/map.png" alt="" />
+                        <p>505 S Atlantic Ave Virginia Beach, VA(Virginia)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-widget">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Dịch vụ</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Mua online</a></li>
+                            <li><a href="#">Liên lạc với chúng tôi</a></li>
+                            <li><a href="#">Ghi chú mua hàng</a></li>
+                            <li><a href="#">Đổi địa chỉ</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Mọi độ tuổi</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Văn phòng</a></li>
+                            <li><a href="#">Học sinh</a></li>
+                            <li><a href="#">Sinh viên</a></li>
+                            <li><a href="#">Giáo viên</a></li>
+                            <li><a href="#">...</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>Chính sách</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Điều khoản sử dụng</a></li>
+                            <li><a href="#">Chính sách bảo mật</a></li>
+                            <li><a href="#">Chính sách hoàn lại tiền</a></li>
+                            <li><a href="#">Hệ thống thanh toán</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-2">
+                    <div class="single-widget">
+                        <h2>GIỚI THIỆU VỀ MUA SẮM</h2>
+                        <ul class="nav nav-pills nav-stacked">
+                            <li><a href="#">Thông tin nhà sách</a></li>
+                            <li><a href="#">Vị trí cửa hàng</a></li>
+                            <li><a href="#">Chương trình liên kết</a></li>
+                            <li><a href="#">Bản quyền</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-sm-3 col-sm-offset-1">
+                    <div class="single-widget">
+                        <h2>Về chúng tôi</h2>
+                        <form action="#" class="searchform">
+                            <input type="text" placeholder="Email của bạn" />
+                            <button type="submit" class="btn btn-default"><i class="fa fa-arrow-circle-o-right"></i></button>
+                            <p>
+                                Nhận các bản cập nhật gần đây nhất từ<br />trang web của chúng tôi và được cập nhật bản thân của bạn ...
+                            </p>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            <div class="row">
+                <p class="pull-left">Copyright © 2013 -BOOK Inc. All rights reserved.</p>
+            </div>
+        </div>
+    </div>
+
+</footer>

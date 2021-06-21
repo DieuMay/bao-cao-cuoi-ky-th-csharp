@@ -1,0 +1,101 @@
+﻿
+@using PagedList.Mvc
+@model PagedList.IPagedList<ModelEF.Model.UserAccount>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p><main>
+    <div class="preloader flex-column justify-content-center align-items-center">
+        <img class="animation__shake" src="~/Assets/Admin/dist/img/UTELogo.png" alt="AdminLTELogo" height="60" width="60">
+    </div>
+    <div class="content-wrapper">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">QUẢN LÝ KHÁCH HÀNG</h3>
+                        </div>
+                        <div class="card-body">
+                            <div class="form-horizontal">
+                                @using (Html.BeginForm("Index", "User", FormMethod.Post))
+                                {
+                                    <div class="row">
+                                        <div class="col-md-2">
+                                            <p>
+                                                @Html.ActionLink("Tạo mới", "Create", "User", null, new { @class = "btn btn-danger" })
+                                            </p>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <input type="text" value="@ViewBag.SearchString" name="searchString" placeholder="Nhập từ khóa tìm kiếm" class="form-control" />
+                                        </div>
+                                        <div class="col-md-2">
+                                            <input type="submit" value="Tìm kiếm" class="btn btn-default" />
+                                        </div>
+                                        <div class="col-md-3">
+                                            <p>
+                                                @Html.ActionLink("Top 3 khách hàng thân thiết", "OrderKhachHang", "User", new { @class = "btn btn-warning" })
+                                            </p>
+                                        </div>
+                                    </div>
+                                }
+                                <table class="table">
+                                    <tr>
+                                        <th>
+                                            STT
+                                        </th>
+                                        <th>
+                                            Tên người dùng
+                                        </th>
+                                        <th>
+                                            Mật khẩu
+                                        </th>
+                                        <th>
+                                            Ghi chú
+                                        </th>
+                                        <th colspan="3">
+                                            Thao tác
+                                        </th>
+                                    </tr>
+                                    @{ var i = 1;}
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>
+                                                @i
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.UserName)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Password)
+                                            </td>
+                                            <td>
+                                                @Html.DisplayFor(modelItem => item.Status)
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-success" href="@Url.Action("Details", "User", new { id = item.Id })"><i class="fa fa-eye"></i></a>
+                                            </td>
+                                            <td>
+                                                <a class="btn btn-primary" href="@Url.Action("Edit", "User", new { id = item.Id })"><i class="fas fa-edit"></i></a>
+                                            </td>
+                                            <td id="deleteRecord">
+                                                <a class="btn btn-danger" id="@item.Id" href="/User/Index"><i class="fa fa-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                        i++;
+                                    }
+                                </table>
+                                @Html.PagedListPager(Model, page => Url.Action("Index", new { page, @searchString = @ViewBag.SearchString }))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
